@@ -40,7 +40,7 @@ jobs:
         run: |
           npm install -g yarn
           yarn
-          yarn global add @serverless/components
+          yarn add -D @serverless/components
           components credentials set -i "$SECRETID" -k "$SECRETKEY"
           yarn generate
           components deploy
