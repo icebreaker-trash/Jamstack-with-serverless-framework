@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: generate
 
 # Controls when the action will run. 
 on:
@@ -34,5 +34,6 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Install Dependencies
         run: |
-          npm install
-          npm run generate
+          npm install -g yarn
+          yarn
+          yarn generate
