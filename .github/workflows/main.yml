@@ -1,5 +1,23 @@
 # This is a basic workflow to help you get started with Actions
 
+# const isChinaUser = () => {
+#   let result;
+#   if (
+#     process.env.SERVERLESS_PLATFORM_VENDOR === 'tencent' ||
+#     process.env.SLS_GEO_LOCATION === 'cn'
+#   ) {
+#     result = true;
+#   } else if (process.env.SERVERLESS_PLATFORM_VENDOR === 'aws') {
+#     result = false;
+#   } else {
+#     result = new Intl.DateTimeFormat('en', { timeZoneName: 'long' })
+#       .format()
+#       .includes('China Standard Time');
+#   }
+
+#   return result;
+# };
+# yarn components credentials set -i "$TENCENT_SECRET_ID" -k "$TENCENT_SECRET_KEY"
 name: generate
 
 # Controls when the action will run. 
@@ -37,10 +55,10 @@ jobs:
         env:
           TENCENT_SECRET_ID: ${{ secrets.TENCENT_SECRET_ID }}
           TENCENT_SECRET_KEY: ${{ secrets.TENCENT_SECRET_KEY }}
+          SERVERLESS_PLATFORM_VENDOR: tencent
         run: |
           npm install -g yarn
           yarn
           yarn add -D @serverless/components
-          yarn components credentials set -i "$TENCENT_SECRET_ID" -k "$TENCENT_SECRET_KEY"
           yarn generate
           yarn components deploy
