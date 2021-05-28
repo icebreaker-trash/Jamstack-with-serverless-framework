@@ -35,12 +35,12 @@ jobs:
       - name: Install Dependencies
         shell: bash
         env:
-          SECRETID: ${{ secrets.SECRETID }}
-          SECRETKEY: ${{ secrets.SECRETKEY }}
+          TENCENT_SECRET_ID: ${{ secrets.TENCENT_SECRET_ID }}
+          TENCENT_SECRET_KEY: ${{ secrets.TENCENT_SECRET_KEY }}
         run: |
           npm install -g yarn
           yarn
           yarn add -D @serverless/components
-          yarn components credentials set -i "$SECRETID" -k "$SECRETKEY"
+          yarn components credentials set -i "$TENCENT_SECRET_ID" -k "$TENCENT_SECRET_KEY"
           yarn generate
-          components deploy
+          yarn components deploy
