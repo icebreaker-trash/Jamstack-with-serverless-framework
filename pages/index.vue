@@ -2,33 +2,25 @@
   <div class="container">
     <div>
       <Logo />
+      <div>Deploy Time: UTC+8 (static)</div>
       <h1 class="title">
-        xxx
+        {{day}}
       </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+
     </div>
+
   </div>
 </template>
 
 <script>
-export default {}
+import dayjs from "dayjs";
+export default {
+  asyncData() {
+    return {
+      day: dayjs().format("YYYY-MM-DD HH:mm:ss"),
+    };
+  },
+};
 </script>
 
 <style>
@@ -42,16 +34,8 @@ export default {}
 }
 
 .title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
+  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   display: block;
   font-weight: 300;
   font-size: 100px;

@@ -1,0 +1,11 @@
+component: website
+name: jamstack-test
+stage: dev
+inputs:
+  src:
+    src: ./dist
+    index: index.html
+    error: index.html
+  region: ap-shanghai
+  bucket: jamstack-test
+  protocol: https
