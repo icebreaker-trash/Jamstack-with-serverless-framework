@@ -33,7 +33,14 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Install Dependencies
+        shell: bash
+        env:
+          SECRETID: ${{ secrets.SECRETID }}
+          SECRETKEY: ${{ secrets.SECRETKEY }}
         run: |
           npm install -g yarn
           yarn
+          yarn global add @serverless/components
+          components credentials set -i "$SECRETID" -k "$SECRETKEY"
           yarn generate
+          components deploy
