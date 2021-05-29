@@ -50,14 +50,14 @@ jobs:
           node-version: 14.x
 
       # Runs a set of commands using the runners shell
-      - name: Install Dependencies and deploy
+      - name: Install Yarn Dependencies and deploy
         shell: bash
         env:
           TENCENT_SECRET_ID: ${{ secrets.TENCENT_SECRET_ID }}
           TENCENT_SECRET_KEY: ${{ secrets.TENCENT_SECRET_KEY }}
           SERVERLESS_PLATFORM_VENDOR: tencent
         run: |
-          npm install -g yarn
+          npm install -g yarn@^1.x
           yarn --prod
           yarn add -D @serverless/components
           yarn generate
