@@ -18,15 +18,15 @@
 #   return result;
 # };
 # yarn components credentials set -i "$TENCENT_SECRET_ID" -k "$TENCENT_SECRET_KEY"
-name: generate
+name: tencent-deploy-yarn
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -50,7 +50,7 @@ jobs:
           node-version: 14.x
 
       # Runs a set of commands using the runners shell
-      - name: Install Dependencies
+      - name: Install Dependencies and deploy
         shell: bash
         env:
           TENCENT_SECRET_ID: ${{ secrets.TENCENT_SECRET_ID }}
@@ -58,7 +58,7 @@ jobs:
           SERVERLESS_PLATFORM_VENDOR: tencent
         run: |
           npm install -g yarn
-          yarn
+          yarn --prod
           yarn add -D @serverless/components
           yarn generate
           yarn components deploy

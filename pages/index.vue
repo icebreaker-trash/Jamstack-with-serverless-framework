@@ -3,9 +3,10 @@
     <div>
       <Logo />
       <div>Deploy Time: UTC+8 (static)</div>
-      <h1 class="title">
-        {{day}}
-      </h1>
+      <h2>
+        <span>server:</span> {{day}}
+      </h2>
+      <h2> <span>client:</span> {{clientDay}}</h2>
 
     </div>
 
@@ -15,6 +16,11 @@
 <script>
 import dayjs from "dayjs";
 export default {
+  data() {
+    return {
+      clientDay: dayjs().format("YYYY-MM-DD HH:mm:ss"),
+    };
+  },
   asyncData() {
     return {
       day: dayjs().format("YYYY-MM-DD HH:mm:ss"),

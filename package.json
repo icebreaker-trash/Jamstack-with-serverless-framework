@@ -13,5 +13,8 @@
     "dayjs": "^1.10.5",
     "nuxt": "^2.15.3"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint": "^7.27.0",
+    "eslint-plugin-nuxt": "^2.0.0"
+  }
 }
